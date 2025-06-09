@@ -1,0 +1,23 @@
+# .gitignore (in your project root)
+
+# Python virtual environment
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Compiled Python files
+__pycache__/
+*.pyc
+*.sqlite3
+
+# Django specific
+/staticfiles/  # Directory where collectstatic gathers files
+/media/        # Directory for user-uploaded media files
+
+# Node.js modules
+/node_modules/
+
+# Logs
+/logs/

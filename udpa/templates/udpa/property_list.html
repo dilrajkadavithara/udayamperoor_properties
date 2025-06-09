@@ -1,0 +1,127 @@
+{# udpa/templates/udpa/property_list.html #}
+{% extends 'base.html' %}
+
+{% block title %}Browse Properties - Udayamperoor Properties{% endblock %}
+
+{% block content %}
+{# Overall page container - Increased vertical padding (py-16) #}
+<div class="container mx-auto px-4 py-16 pt-16 bg-blue-800"> {# Changed py-8 to py-16 #}
+    {# Header for Search & Filter #}
+    <div class="bg-white rounded-lg shadow-xl p-6 mb-12">
+        <h1 class="text-3xl font-extrabold text-blue-800 mb-6 text-center">Find Your Perfect Property</h1>
+
+        <form method="GET" action="{% url 'udpa:property_list' %}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {# Keyword Search - Spans 2 columns on large screens #}
+            <div class="lg:col-span-2">
+                <label for="{{ form.keyword.id_for_label }}" class="sr-only">Keyword</label>
+                {{ form.keyword }}
+            </div>
+
+            {# Property Type Dropdown - Single column on large screens #}
+            <div class="lg:col-span-1">
+                <label for="{{ form.property_type.id_for_label }}" class="sr-only">Property Type</label>
+                {{ form.property_type }}
+            </div>
+
+            {# Bedrooms Input - Single column on large screens #}
+            <div class="lg:col-span-1">
+                <label for="{{ form.bedrooms.id_for_label }}" class="sr-only">Bedrooms</label>
+                {{ form.bedrooms }}
+            </div>
+
+            {# Bathrooms Input - Single column on large screens #}
+            <div class="lg:col-span-1">
+                <label for="{{ form.bathrooms.id_for_label }}" class="sr-only">Bathrooms</label>
+                {{ form.bathrooms }}
+            </div>
+
+            {# Min Price Input - Single column on large screens #}
+            <div class="lg:col-span-1">
+                <label for="{{ form.min_price.id_for_label }}" class="sr-only">Min Price</label>
+                {{ form.min_price }}
+            </div>
+
+            {# Max Price Input - Single column on large screens #}
+            <div class="lg:col-span-1">
+                <label for="{{ form.max_price.id_for_label }}" class="sr-only">Max Price</label>
+                {{ form.max_price }}
+            </div>
+
+            {# Search & Reset Buttons - Spans 2 columns on small, 1 on large #}
+            <div class="sm:col-span-2 lg:col-span-1 flex flex-col sm:flex-row gap-4">
+                <button type="submit" class="w-full sm:w-1/2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-lg transform hover:scale-105">
+                    Search
+                </button>
+                <a href="{% url 'udpa:property_list' %}" class="w-full sm:w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-lg transform hover:scale-105 text-center flex items-center justify-center">
+                    Reset
+                </a>
+            </div>
+        </form>
+    </div>
+
+    {# Heading for Property Listings #}
+    <h2 class="text-3xl font-bold text-white mb-2 text-center">All Properties</h2>
+    <p class="text-lg text-gray-200 mb-8 text-center">Browse our curated selection of properties for sale and rent in Udayamperoor.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for property in properties %}
+            {% include 'udpa/_property_card.html' with property=property %}
+        {% empty %}
+            <div class="col-span-full text-center py-10 text-gray-100">
+                <p class="text-lg">No properties found at the moment. Please check back later!</p>
+                <p class="text-sm mt-2">Or contact us for custom search assistance.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# Pagination Controls #}
+    {% if properties.has_other_pages %}
+    <nav class="flex justify-center mt-10" aria-label="Pagination">
+        <ul class="flex items-center -space-x-px h-10 text-base">
+            {# Previous Button #}
+            {% if properties.has_previous %}
+            <li>
+                <a href="?page={{ properties.previous_page_number }}{% if request.GET.form_data %}&{{ request.GET.form_data.urlencode }}{% endif %}" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-blue-100 bg-blue-700 border border-blue-600 rounded-s-lg hover:bg-blue-600 hover:text-white transition duration-200 ease-in-out">
+                    Previous
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <span class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-blue-300 bg-blue-700 border border-blue-600 rounded-s-lg cursor-not-allowed">
+                    Previous
+                </span>
+            </li>
+            {% endif %}
+
+            {# Page Numbers #}
+            {% for i in properties.paginator.page_range %}
+                {% if properties.number == i %}
+                <li>
+                    <span aria-current="page" class="flex items-center justify-center px-4 h-10 text-white bg-blue-600 border border-blue-500 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out">{{ i }}</span>
+                </li>
+                {% else %}
+                <li>
+                    <a href="?page={{ i }}{% if request.GET.form_data %}&{{ request.GET.form_data.urlencode }}{% endif %}" class="flex items-center justify-center px-4 h-10 leading-tight text-blue-100 bg-blue-700 border border-blue-600 hover:bg-blue-600 hover:text-white transition duration-200 ease-in-out">{{ i }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+
+            {# Next Button #}
+            {% if properties.has_next %}
+            <li>
+                <a href="?page={{ properties.next_page_number }}{% if request.GET.form_data %}&{{ request.GET.form_data.urlencode }}{% endif %}" class="flex items-center justify-center px-4 h-10 leading-tight text-blue-100 bg-blue-700 border border-blue-600 rounded-e-lg hover:bg-blue-600 hover:text-white transition duration-200 ease-in-out">
+                    Next
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <span class="flex items-center justify-center px-4 h-10 leading-tight text-blue-300 bg-blue-700 border border-blue-600 rounded-e-lg cursor-not-allowed">
+                    Next
+                </span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock content %}

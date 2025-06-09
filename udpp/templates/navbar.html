@@ -1,0 +1,32 @@
+{# udpp/templates/navbar.html #}
+{% load static %}
+<nav class="absolute top-0 left-0 right-0 z-50 w-full px-8 py-4 bg-gradient-to-b from-blue-900/60 to-transparent">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="{% url 'udpa:home' %}" class="text-white text-2xl font-bold">Udayamperoor Properties</a>
+
+        {# Desktop Navigation #}
+        <div class="hidden md:flex space-x-6">
+            <a href="{% url 'udpa:home' %}" class="text-white hover:text-blue-200 transition duration-300">Home</a>
+            <a href="{% url 'udpa:property_list' %}" class="text-white hover:text-blue-200 transition duration-300">Properties</a>
+            <a href="{% url 'udpa:home' %}#why-udayamperoor-section" class="text-white hover:text-blue-200 transition duration-300">Why Udayamperoor</a>
+            <a href="{% url 'udpa:home' %}#contact-us-section" class="text-white hover:text-blue-200 transition duration-300">Contact Us</a>
+        </div>
+
+        {# Mobile Menu Button #}
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-white focus:outline-none focus:ring-2 focus:ring-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    {# Mobile Navigation (hidden by default, shown with JS) #}
+    <div id="mobile-menu" class="md:hidden hidden bg-blue-800 mt-2 rounded-md shadow-lg py-2">
+        <a href="{% url 'udpa:home' %}" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300">Home</a>
+        <a href="{% url 'udpa:property_list' %}" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300">Properties</a>
+        <a href="{% url 'udpa:home' %}#why-udayamperoor-section" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300">Why Udayamperoor</a>
+        <a href="{% url 'udpa:home' %}#contact-us-section" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300">Contact Us</a>
+    </div>
+</nav>

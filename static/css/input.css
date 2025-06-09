@@ -1,0 +1,45 @@
+/* static/css/input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Tailwind for Form Inputs - Directly Written CSS (Workaround for @apply issue) */
+.form-input,
+.form-select {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem; /* py-3 */
+  border-width: 1px; /* border */
+  border-color: #d1d5db; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  outline: 2px solid transparent; /* focus:outline-none */
+  outline-offset: 2px; /* focus:outline-none */
+  box-shadow: 0 0 #0000; /* focus:outline-none related */
+  color: rgb(17 24 39 / var(--tw-text-opacity)); /* text-gray-900 */
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)); /* bg-white */
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: 2px solid transparent; /* focus:outline-none */
+  outline-offset: 2px; /* focus:outline-none */
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000); /* focus:ring-2 */
+  --tw-ring-offset-width: 0px; /* focus:ring-2 */
+  --tw-ring-offset-color: #fff; /* focus:ring-2 */
+  --tw-ring-color: rgb(59 130 246 / 0.5); /* focus:ring-2 (default blue) */
+  --tw-ring-opacity: 1; /* focus:ring-blue-500 */
+  border-color: transparent; /* focus:border-transparent */
+  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity)); /* focus:ring-blue-500 */
+}
+
+.form-select {
+  -webkit-appearance: none; /* appearance-none */
+  -moz-appearance: none;    /* appearance-none */
+  appearance: none;       /* appearance-none */
+  padding-right: 2rem; /* pr-8 (adjusted to give space for arrow) */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.5em 1.5em;
+}

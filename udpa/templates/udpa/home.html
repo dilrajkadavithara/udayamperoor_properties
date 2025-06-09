@@ -1,0 +1,204 @@
+{# udpa/templates/udpa/home.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Udayamperoor Properties - Home{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section
+    class="relative bg-cover bg-center h-[90vh] flex items-center text-white"
+    style="background-image: url('{% static 'images/hero_bg.jpg' %}')"
+>
+    <!-- Overlay for readability + bottom gradient for luxury depth -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-900/80 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 pointer-events-none z-10"
+        style="background: linear-gradient(to top, #1e3a8a 70%, transparent); opacity:0.7;"></div>
+
+    <div class="relative z-20 px-4 md:px-8 lg:px-16 py-8 max-w-7xl mx-auto flex items-center w-full">
+        <!-- Left Side Content -->
+        <div class="w-full md:w-1/2 lg:w-2/5 text-left space-y-6"
+             data-aos="fade-right">
+            <h1 class="text-4xl md:text-7xl font-extrabold leading-tight drop-shadow-lg animate-fade-in-up">
+                Your Dream Awaits in <br>
+                <span class="text-blue-200">Udayamperoor</span>
+            </h1>
+            <p class="text-lg md:text-xl drop-shadow-md animate-fade-in-up"
+               style="animation-delay:.2s;">
+                Explore exclusive properties that blend serene living with unmatched connectivity in Ernakulam's thriving locale.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+                <a href="{% url 'udpa:property_list' %}"
+                   class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-xl transition duration-300 ease-in-out transform hover:scale-105 focus:scale-105 focus:ring-4 focus:ring-blue-400/40 text-center w-full sm:w-auto"
+                   data-aos="fade-up">
+                    <span class="inline-flex items-center gap-2">
+                        <!-- Heroicon: HomeModern -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                             d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h3a1 1 0 001-1v-5h2v5a1 1 0 001 1h3a1 1 0 001-1V10" /></svg>
+                        Browse Properties
+                    </span>
+                </a>
+                <a href="#contact-us-section"
+                   class="inline-block bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-xl transition duration-300 ease-in-out transform hover:scale-105 focus:scale-105 focus:ring-4 focus:ring-blue-200/30 text-center w-full sm:w-auto"
+                   data-aos="fade-up" style="animation-delay:.1s;">
+                    <span class="inline-flex items-center gap-2">
+                        <!-- Heroicon: Phone -->
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                             d="M2 4v4a2 2 0 002 2h2l2 7-2 2a2 2 0 002 2h4a2 2 0 002-2l-2-2 2-7h2a2 2 0 002-2V4"/></svg>
+                        Get in Touch
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!-- Right Side Image Placeholder (optional) -->
+        <div class="hidden md:block md:w-1/2 lg:w-3/5"></div>
+    </div>
+</section>
+
+<!-- WAVE SECTION SEPARATOR -->
+<div class="relative -mt-2">
+    <svg class="absolute top-0 w-full h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#1e40af" fill-opacity="1"
+              d="M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,106.7C840,117,960,171,1080,170.7C1200,171,1320,117,1380,90.7L1440,64V320H1380C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320H0V96Z">
+        </path>
+    </svg>
+</div>
+
+<!-- WHY UDAYAMPEROOR SECTION -->
+<div id="why-udayamperoor-section"
+     class="container mx-auto px-4 py-16 bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950 text-white">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-6" data-aos="fade-down">
+        Why Choose <span class="text-blue-200">Udayamperoor?</span>
+    </h2>
+    <p class="text-center text-xl text-blue-100 mb-12 max-w-3xl mx-auto" data-aos="fade-up">
+        Discover a locale where serene living meets unparalleled convenience and smart investment.<br>
+        Udayamperoor offers a unique balance for a fulfilling life.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1: Connectivity -->
+        <div class="bg-white rounded-2xl shadow-2xl p-7 text-gray-800 flex flex-col h-full hover:-translate-y-1 hover:shadow-3xl transition-all duration-300 group"
+             data-aos="zoom-in">
+            <div class="mb-4 flex items-center gap-3">
+                <!-- Icon: Globe -->
+                <svg class="w-8 h-8 text-blue-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" /></svg>
+                <h3 class="text-2xl font-serif font-semibold text-blue-700">Seamless Connectivity</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">Strategically located for convenience: only <span class="font-semibold text-blue-800">15 km to Infopark</span>, <span class="font-semibold text-blue-800">8 km to Metro Stations</span>, and quick access to NH66 for seamless travel across Kochi.</p>
+        </div>
+
+        <!-- Card 2: Serene Living -->
+        <div class="bg-white rounded-2xl shadow-2xl p-7 text-gray-800 flex flex-col h-full hover:-translate-y-1 hover:shadow-3xl transition-all duration-300 group"
+             data-aos="zoom-in" data-aos-delay="100">
+            <div class="mb-4 flex items-center gap-3">
+                <!-- Icon: Leaf -->
+                <svg class="w-8 h-8 text-green-700 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><path d="M12 22c4.97 0 9-4.03 9-9 0-5-6-9-9-9s-9 4-9 9c0 4.97 4.03 9 9 9z" /></svg>
+                <h3 class="text-2xl font-serif font-semibold text-blue-700">Serene Living, Natural Beauty</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">Embrace tranquility amidst lush greenery and the serene backwaters of <span class="font-semibold text-blue-800">Vembanad Lake</span>. A peaceful retreat from urban bustle, yet close to all modern amenities.</p>
+        </div>
+
+        <!-- Card 3: Affordable Living -->
+        <div class="bg-white rounded-2xl shadow-2xl p-7 text-gray-800 flex flex-col h-full hover:-translate-y-1 hover:shadow-3xl transition-all duration-300 group"
+             data-aos="zoom-in" data-aos-delay="200">
+            <div class="mb-4 flex items-center gap-3">
+                <!-- Icon: Rupee -->
+                <svg class="w-8 h-8 text-yellow-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><path d="M12 3v18M6 6h12M6 12h12M6 18h12" /></svg>
+                <h3 class="text-2xl font-serif font-semibold text-blue-700">Balanced & Affordable Living</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">Achieve your dream lifestyle without compromise. Enjoy <span class="font-semibold text-blue-800">comparatively lower property prices</span> and a less congested environment than Kochi city, ensuring a harmonious balance of cost and quality.</p>
+        </div>
+
+        <!-- Card 4: Modern Conveniences -->
+        <div class="bg-white rounded-2xl shadow-2xl p-7 text-gray-800 flex flex-col h-full hover:-translate-y-1 hover:shadow-3xl transition-all duration-300 group"
+             data-aos="zoom-in" data-aos-delay="300">
+            <div class="mb-4 flex items-center gap-3">
+                <!-- Icon: Shopping Cart -->
+                <svg class="w-8 h-8 text-pink-700 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39A2 2 0 009.65 17h8.7a2 2 0 001.97-1.61l1.38-7A1 1 0 0021 7H6" /></svg>
+                <h3 class="text-2xl font-serif font-semibold text-blue-700">Modern Conveniences</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">Access to numerous <span class="font-semibold text-blue-800">supermarkets</span>, retail outlets, and essential services for all your daily needs.</p>
+        </div>
+
+        <!-- Card 5: Investment Potential -->
+        <div class="bg-white rounded-2xl shadow-2xl p-7 text-gray-800 flex flex-col h-full hover:-translate-y-1 hover:shadow-3xl transition-all duration-300 group"
+             data-aos="zoom-in" data-aos-delay="400">
+            <div class="mb-4 flex items-center gap-3">
+                <!-- Icon: Trending Up -->
+                <svg class="w-8 h-8 text-indigo-700 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><polyline points="4 17 10 11 14 15 21 8" /></svg>
+                <h3 class="text-2xl font-serif font-semibold text-blue-700">High Investment Potential</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">Udayamperoor is a rapidly developing area with significant infrastructure projects. High capital appreciation prospects make it a promising investment for a secure future.</p>
+        </div>
+
+        <!-- Card 6: Cultural Heritage -->
+        <div class="bg-white rounded-2xl shadow-2xl p-7 text-gray-800 flex flex-col h-full hover:-translate-y-1 hover:shadow-3xl transition-all duration-300 group"
+             data-aos="zoom-in" data-aos-delay="500">
+            <div class="mb-4 flex items-center gap-3">
+                <!-- Icon: Sparkles (Cultural) -->
+                <svg class="w-8 h-8 text-purple-700 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><path d="M12 2v2m6.364 1.636l-1.414 1.414M22 12h-2m-1.636 6.364l-1.414-1.414M12 22v-2m-6.364-1.636l1.414-1.414M2 12h2m1.636-6.364l1.414 1.414" /></svg>
+                <h3 class="text-2xl font-serif font-semibold text-blue-700">Rich Cultural Heritage</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">Immerse yourself in a vibrant local heritage. Udayamperoor is home to famous <span class="font-semibold text-blue-800">temples</span> and ancient <span class="font-semibold text-blue-800">churches</span>, celebrating a rich tapestry of traditions and community life.</p>
+        </div>
+    </div>
+</div>
+
+<!-- WAVE SEPARATOR TO CONTACT US -->
+<div class="relative -mt-8">
+    <svg class="absolute top-0 w-full h-12" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#f3f4f6" fill-opacity="1"
+              d="M0,192L80,170.7C160,149,320,107,480,101.3C640,96,800,128,960,128C1120,128,1280,96,1360,80L1440,64V320H1360C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320H0V192Z">
+        </path>
+    </svg>
+</div>
+
+<!-- CONTACT US SECTION -->
+<div id="contact-us-section" class="relative bg-gray-100 py-16 text-gray-800">
+    <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-3">Contact <span class="text-blue-700">Udayamperoor Properties</span></h2>
+        <p class="mb-10 text-lg text-gray-600">
+            We’re here to help you find your dream property. Reach out today!
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="p-6 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center h-full group transition hover:shadow-2xl hover:-translate-y-1">
+                <!-- Icon: Office/Building -->
+                <svg class="w-12 h-12 text-blue-600 mb-4 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><path d="M3 21V3h18v18M9 21v-6h6v6" /></svg>
+                <h3 class="text-xl font-semibold mb-2">Our Office</h3>
+                <p class="text-gray-700">Udayamperoor Properties,<br>Sreemandiram Buildings,<br>MankayIKadavu Road, Udayamperoor PO,<br>Ernakulam, PIN-682307</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center h-full group transition hover:shadow-2xl hover:-translate-y-1">
+                <!-- Icon: Phone -->
+                <svg class="w-12 h-12 text-blue-600 mb-4 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
+                <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+                <a href="tel:+916238804932"
+                   class="text-blue-600 font-bold text-xl underline underline-offset-4 hover:text-blue-900 transition"
+                   aria-label="Call Udayamperoor Properties">
+                    +91 62388 04932
+                </a>
+            </div>
+        </div>
+        <!-- CTA Button/WhatsApp (optional) -->
+        <div class="mt-6 flex flex-col items-center gap-3">
+            <a href="https://wa.me/916238804932" target="_blank"
+               class="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-lg gap-2 transition-all duration-300 focus:ring-4 focus:ring-green-300"
+               aria-label="Chat with us on WhatsApp">
+                <!-- WhatsApp Icon -->
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.672.15-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.672-1.625-.92-2.224-.242-.584-.487-.504-.672-.513l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.877 1.213 3.074c.149.198 2.099 3.202 5.077 4.363.711.246 1.264.393 1.696.505.712.18 1.36.155 1.872.094.572-.068 1.758-.718 2.007-1.413.248-.695.248-1.291.173-1.414-.074-.124-.272-.198-.569-.347z"/></svg>
+                Contact us
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
