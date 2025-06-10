@@ -3,31 +3,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Udayamperoor Properties{% endblock %}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    {# Link your compiled Tailwind CSS file #}
-   
-
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
-    {% block extra_head %}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Udayamperoor Properties{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    {# Link your compiled Tailwind CSS file #}
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    {% block extra_head %}{% endblock %}
 </head>
-<body class="font-sans antialiased text-gray-900"> {# bg-gray-50 removed #}
-    {% include 'navbar.html' %} {# The included navbar #}
+<body class="font-sans antialiased text-gray-900">
+
+    {# Main Fixed Header Container for Prominent Phone Number and Navbar #}
+    <div class="fixed top-0 left-0 right-0 z-50 bg-blue-900 shadow-lg"> {# Fixed at top, full width, high z-index, blue background, shadow #}
+        {# Desktop Header Structure (visible on md screens and up) #}
+        <div class="hidden md:block">
+            {# Top Bar with Prominent Phone Number (Desktop) #}
+            <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+                {# Logo - Desktop #}
+                <a href="{% url 'udpa:home' %}" class="text-white text-2xl font-bold lg:text-3xl">Udayamperoor Properties</a>
+
+                {# Phone Number for Desktop (Large, Centered in its own flex item) #}
+                <div class="flex-1 text-center"> {# flex-1 makes it take available space to center #}
+                    <a href="tel:+916238804932" class="text-3xl lg:text-4xl font-extrabold tracking-wide text-blue-200 hover:text-white transition duration-300">
+                        +91 62388 04932
+                    </a>
+                </div>
+
+                {# Desktop Navigation Links #}
+                <div class="flex space-x-6 items-center">
+                    <a href="{% url 'udpa:home' %}" class="text-white hover:text-blue-200 transition duration-300">Home</a>
+                    <a href="{% url 'udpa:property_list' %}" class="text-white hover:text-blue-200 transition duration-300">Properties</a>
+                    <a href="{% url 'udpa:home' %}#why-udayamperoor-section" class="text-white hover:text-blue-200 transition duration-300">Why Udayamperoor</a>
+                    <a href="{% url 'udpa:home' %}#contact-us-section" class="text-white hover:text-blue-200 transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+        {# Mobile Header Structure (visible on screens smaller than md) #}
+        <div class="md:hidden">
+            {# Row 1: Logo and Hamburger Icon #}
+            <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+                {# Logo - Mobile #}
+                <a href="{% url 'udpa:home' %}" class="text-white text-2xl font-bold">Udayamperoor Properties</a>
+
+                {# Mobile Menu Button #}
+                <div>
+                    <button id="mobile-menu-button" class="text-white focus:outline-none focus:ring-2 focus:ring-white">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            {# Row 2: Mobile Phone Number - Centered below logo/hamburger #}
+            <div class="container mx-auto px-4 pb-3 text-center"> {# py-3 changed to pb-3 to control spacing #}
+                <a href="tel:+916238804932" class="text-white text-lg font-semibold block"> {# text-lg size for mobile #}
+                    +91 62388 04932
+                </a>
+            </div>
+        </div>
+
+        {# Mobile Dropdown Menu (hidden by default, shown with JS) - No phone number here #}
+        <div id="mobile-menu" class="md:hidden bg-blue-800 hidden w-full overflow-hidden">
+            <div class="container mx-auto px-4 py-2">
+                <a href="{% url 'udpa:home' %}" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300 rounded-md">Home</a>
+                <a href="{% url 'udpa:property_list' %}" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300 rounded-md">Properties</a>
+                <a href="{% url 'udpa:home' %}#why-udayamperoor-section" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300 rounded-md">Why Udayamperoor</a>
+                <a href="{% url 'udpa:home' %}#contact-us-section" class="block px-4 py-2 text-white hover:bg-blue-700 transition duration-300 rounded-md">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    {# Spacer div to push main content down below the fixed header #}
+    {# The height of this div should match the fixed header's total height on mobile and desktop #}
+    {# Adjust these 'pt-' values after initial local testing to match your actual header height #}
+    <div class="pt-[90px] md:pt-20 lg:pt-24"></div> {# Calculated approx heights for 2-row mobile, 1-row desktop #}
+
+
     {% block content %}
     {% endblock content %}
     {# Link your main JavaScript file #}
-    
     <script src="{% static 'js/main.js' %}"></script> 
     {% block extra_js %}{% endblock %}
 
     <footer class="bg-blue-900 text-white py-6">
         <div class="container mx-auto px-4 text-center text-sm">
             <p>&copy; {% now "Y" %} Udayamperoor Properties. All rights reserved.</p>
-            {# Placeholder for quick links/social media if later desired #}
         </div>
     </footer>
 </body>
