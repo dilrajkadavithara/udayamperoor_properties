@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'udpa',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -197,4 +199,5 @@ LOGGING = {
 # ADMINS = [('Your Name', 'your_email@example.com')]
 # MANAGERS = ADMINS
 
-
+# For django.contrib.sites framework
+SITE_ID = 1
